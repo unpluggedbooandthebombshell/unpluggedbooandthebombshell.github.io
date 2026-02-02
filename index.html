@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day 💖</title>
+<style>
+  /* Background gradient */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+
+  /* Card container */
+  .card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px 60px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    max-width: 600px;
+    position: relative;
+    z-index: 10;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  button {
+    background: white;
+    color: #ff4d6d;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  button:hover {
+    background: #ffe6eb;
+    transform: scale(1.1);
+  }
+
+  /* Floating hearts animation */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: float 4s linear infinite;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: 10px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Happy Valentine's Day 💖</h1>
+  <h2>To My Favorite Person</h2>
+  <p id="message">Click the button for a surprise!</p>
+  <button onclick="showLove()">Click Me 💌</button>
+</div>
+
+<script>
+  // Show love message
+  function showLove() {
+    document.getElementById("message").innerHTML = "I love you more than words (and code) can say ❤️";
+    createHearts();
+  }
+
+  // Create floating hearts
+  function createHearts() {
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+      heart.style.width = 10 + Math.random() * 20 + "px";
+      heart.style.height = heart.style.width;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  }
+</script>
+
+</body>
+</html>
